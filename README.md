@@ -1,5 +1,5 @@
 
-# Mancala Game
+# Rabobank assignment Ahmed Aziz
 
 Rabobank assignment Ahmed Aziz
 
@@ -36,7 +36,7 @@ Application will start on
 | `POST  `    | `/rabobank/api/v1/authorize-account`                                | Authorize given account           |
 
 ## Sequence Diagrams
-![Mancala Game](docs/rabo-sd-v1.jpg)
+![Rabo-Ahmed-SD](docs/rabo-sd-v1.jpg)
 
 ## Features
 1- Customers can call the server with their user ID. They will get a list of their account details. These accounts consist of the account itself and the authorization type that this account has. 
@@ -48,7 +48,7 @@ Application will start on
 4- If the account is already assigned to a customer, this account can not be assigned one more time. The same account can be assigned to different customers if the authorization type is different. For example, if the customer has authorization for an account with type READ, the account can be authorized again for a different authorization type (in this case WRITE permisson). 
 
 ## Postman collection
-![Mancala Game](docs/Rabo Ahmed Assignment.postman_collection.json)
+[Postman Collection](docs/RaboAhmedAssignment.postman_collection.json)
 
 ## Author: Ahmed Aziz
 - [Linkedin](https://www.linkedin.com/in/ahmedaziz83/)

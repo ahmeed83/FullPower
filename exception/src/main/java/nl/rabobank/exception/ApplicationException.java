@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 /**
- * Mancala Application Exception.
+ * Application Exception.
  */
 @Getter
 public abstract class ApplicationException extends RuntimeException {
