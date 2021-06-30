@@ -5,7 +5,7 @@ Rabobank assignment Ahmed Aziz
 
 ## Tech Stack
 
-**Server:** Java 11, Spring boot, Spring WEB, Lombok, JPA, MongoDB
+**Server:** Java 11, Spring boot, Spring WEB, Lombok, MongoDB
 
 ## Run Locally
 
