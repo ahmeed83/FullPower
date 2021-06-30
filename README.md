@@ -11,7 +11,7 @@ Rabobank assignment Ahmed Aziz
 
 Clone the project
 ```bash
-  git clone https://github.com/ErwinManders/RabobankAssignment
+  git clone https://github.com/ahmeed83/RabobankAssignment
 ```
 Go to the project directory
 ```bash
