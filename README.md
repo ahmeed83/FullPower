@@ -39,13 +39,17 @@ Application will start on
 ![Rabo-Ahmed-SD](docs/rabo-sd-v1.jpg)
 
 ## Features
-1- Customers can call the server with their user ID. They will get a list of their account details. These accounts consist of the account itself and the authorization type that this account has. 
+1- Customers can call the server with their user ID (when they log in). They will get a list of their account details. These accounts consist of the account itself, and the authorization type that this account has. 
 
-2- The authorization type can consist of three types: 1) OWNER: which means this account belongs to the customer. 2) READ: This means this account does not belong to the customer but the customer has the right to see it. 3) Write: This means this account does not belong to the customer but the customer has the right to edit it. 
+2- The authorization type can consist of three types:
+  1) OWNER: means this account belongs to the logged-in user.
+  2) READ: means this account is not belong to the logged-in user, but he has the permission to see it. 
+  3) Write: means this account is not belong to the logged-in user, but he has the permission to change it. 
 
-3- Customer can give authorize his accounts to other customers. The customer can permit READ/WRITE permissions of his accounts to others. The customer can not permit OWNER permission to other customers.
+3- Customers can authorize their accounts to other customers. They can permit READ/WRITE permissions of their accounts to others. However, customers can not permit OWNER permission to other customers.
 
-4- If the account is already assigned to a customer, this account can not be assigned one more time. The same account can be assigned to different customers if the authorization type is different. For example, if the customer has authorization for an account with type READ, the account can be authorized again for a different authorization type (in this case WRITE permisson). 
+4- If an account is already been assigned to a customer, this account can not be assigned again. However, the same account can be assigned to a different customers if the authorization type is different. For example,
+if a customer has authorization for an account with type READ, the account can be authorized again for a different authorization type (in this case WRITE). 
 
 ## Postman collection
 [Postman Collection](docs/RaboAhmedAssignment.postman_collection.json)
