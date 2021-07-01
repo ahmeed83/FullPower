@@ -11,6 +11,7 @@ import nl.rabobank.exception.business.AccountNotFoundException;
 import nl.rabobank.exception.business.AuthorizationMethodNotAcceptedException;
 import nl.rabobank.exception.business.CustomerNotFoundException;
 import nl.rabobank.exception.business.GranteeHasIBANAlreadyException;
+import nl.rabobank.exception.business.GrantorIdNotEqualGranteeIdException;
 import nl.rabobank.exception.business.IbanDoesNotBelongsToGrantorException;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,10 @@ public class AuthorizationService {
                 .orElseThrow(CustomerNotFoundException::new);
         var customerGrantee = customerRepository.findById(authorizedRequest.getGranteeId())
                 .orElseThrow(CustomerNotFoundException::new);
+
+        if (authorizedRequest.getGrantorId().equals(authorizedRequest.getGranteeId())) {
+            throw new GrantorIdNotEqualGranteeIdException();
+        }
 
         if (!isAuthorizationMethodAcceptable(authorizedRequest.getAuthorizationType())) {
             throw new AuthorizationMethodNotAcceptedException();

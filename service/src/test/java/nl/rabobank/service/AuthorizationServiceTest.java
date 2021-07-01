@@ -7,6 +7,7 @@ import nl.rabobank.domain.authorizations.AuthorizedRequest;
 import nl.rabobank.domain.customer.Customer;
 import nl.rabobank.exception.business.AuthorizationMethodNotAcceptedException;
 import nl.rabobank.exception.business.GranteeHasIBANAlreadyException;
+import nl.rabobank.exception.business.GrantorIdNotEqualGranteeIdException;
 import nl.rabobank.exception.business.IbanDoesNotBelongsToGrantorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -160,6 +161,26 @@ class AuthorizationServiceTest {
         assertThatExceptionOfType(IbanDoesNotBelongsToGrantorException.class).isThrownBy(
                 () -> authorizationService.authorizeAccountToCustomer(authorizedRequest))
                 .withMessage("You dont have rights to assign this IBAN. Please use IBAN that belongs to you!");
+        assertThat(customer2.getCustomerDetails().size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("It should not assign account to a given customer if the grantor id is the same as the grantee id")
+    void ItShouldNotAssignAccountToGivenCustomerIfGrantorIdSameAsGranteeId() {
+        // Given
+        given(customerRepository.findById(MockData.CUSTOMER_1_ID)).willReturn(Optional.of(customer1));
+        authorizedRequest = AuthorizedRequest.builder()
+                .grantorId(MockData.CUSTOMER_1_ID)
+                .granteeId(MockData.CUSTOMER_1_ID)
+                .accountNumber(MockData.CUSTOMER_1_PAYMENT_ACCOUNT)
+                .authorizationType(AccountAuthorizationType.WRITE)
+                .build();
+        assertThat(customer2.getCustomerDetails().size()).isEqualTo(2);
+        // When
+        // Then
+        assertThatExceptionOfType(GrantorIdNotEqualGranteeIdException.class).isThrownBy(
+                () -> authorizationService.authorizeAccountToCustomer(authorizedRequest))
+                .withMessage("Please use another customer id. This account is already assigned to you!");
         assertThat(customer2.getCustomerDetails().size()).isEqualTo(2);
     }
 }

@@ -164,4 +164,25 @@ class AuthorizationAPITest {
                 .andExpect(jsonPath("$.errorMessage", Matchers.is("You dont have rights to assign this IBAN. Please use IBAN that belongs to you!")))
                 .andExpect(status().isForbidden());
     }
+
+    @Test
+    @DisplayName("It should not assign account to a given customer if the grantor id is the same as the grantee id")
+    void ItShouldNotAssignAccountToGivenCustomerIfGrantorIdSameAsGranteeId() throws Exception {
+        // Given
+        given(customerRepository.findById(MockData.CUSTOMER_1_ID)).willReturn(Optional.of(customer1));
+        authorizedRequest = AuthorizedRequest.builder()
+                .grantorId(MockData.CUSTOMER_1_ID)
+                .granteeId(MockData.CUSTOMER_1_ID)
+                .accountNumber(MockData.CUSTOMER_1_PAYMENT_ACCOUNT)
+                .authorizationType(AccountAuthorizationType.WRITE)
+                .build();
+        // When
+        this.mockMvc.perform(post(POST_AUTHORIZE)
+                                     .contentType(APPLICATION_JSON)
+                                     .content(new ObjectMapper().writeValueAsString(authorizedRequest)))
+                .andDo(print())
+                // Then
+                .andExpect(jsonPath("$.errorMessage", Matchers.is("Please use another customer id. This account is already assigned to you!")))
+                .andExpect(status().isConflict());
+    }
 }
