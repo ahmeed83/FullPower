@@ -35,6 +35,9 @@ Application will start on
 | `GET`       | `/rabobank/api/v1/customer-account-details/{customerId}`            | Get all customer accounts         |
 | `POST  `    | `/rabobank/api/v1/authorize-account`                                | Authorize given account           |
 
+## DEMO
+![application](docs/app.jpg)
+
 ## Sequence Diagrams
 ![Rabo-Ahmed-SD](docs/rabo-sd-v1.jpg)
 
