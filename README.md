@@ -5,6 +5,8 @@ Rabobank assignment Ahmed Aziz
 
 ## Tech Stack
 
+**Server:** React, TailwindCSS
+
 **Server:** Java 11, Spring boot, Spring WEB, Lombok, MongoDB
 
 ## Run Locally
