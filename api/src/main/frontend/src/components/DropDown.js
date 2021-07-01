@@ -24,10 +24,10 @@ export const DropDown = ({setAuthorizationType}) => {
             </button>
             {showDropDownContent &&
             <div className="absolute w-48 flex flex-col py-2 mt-1 text-gray-700 bg-white border border-black rounded-lg">
-                <a className="px-3 py-1 cursor-pointer hover:bg-blue-500"
-                   onClick={() => hideDropDownInfo("READ")}>READ</a>
-                <a className="px-3 py-1 cursor-pointer hover:bg-blue-500"
-                   onClick={() => hideDropDownInfo("WRITE")}>WRITE</a>
+                <div className="px-3 py-1 cursor-pointer hover:bg-blue-500"
+                   onClick={() => hideDropDownInfo("READ")}>READ</div>
+                <div className="px-3 py-1 cursor-pointer hover:bg-blue-500"
+                   onClick={() => hideDropDownInfo("WRITE")}>WRITE</div>
             </div>
             }
         </div>

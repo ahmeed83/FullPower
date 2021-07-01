@@ -31,7 +31,7 @@ export const App = () => {
                 <CustomerAccountList customerAccounts={customerAccounts} customerId={customerId}/>
                 : <form onSubmit={handleSubmit}>
                     <div className="pt-24 pb-10">
-                        <h2 className="pb-2 text-white">Please use 100 or 200. These only test users in the DB</h2>
+                        <h2 className="pb-2 text-white">Please use 100 or 200.</h2>
                         <input
                             className="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="title"
