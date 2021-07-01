@@ -35,10 +35,6 @@ public class AuthorizationService {
      * @param authorizedRequest authorizedRequest
      */
     public void authorizeAccountToCustomer(final AuthorizedRequest authorizedRequest) {
-        var customerGrantor = customerRepository.findById(authorizedRequest.getGrantorId())
-                .orElseThrow(CustomerNotFoundException::new);
-        var customerGrantee = customerRepository.findById(authorizedRequest.getGranteeId())
-                .orElseThrow(CustomerNotFoundException::new);
 
         if (authorizedRequest.getGrantorId().equals(authorizedRequest.getGranteeId())) {
             throw new GrantorIdNotEqualGranteeIdException();
@@ -47,6 +43,11 @@ public class AuthorizationService {
         if (!isAuthorizationMethodAcceptable(authorizedRequest.getAuthorizationType())) {
             throw new AuthorizationMethodNotAcceptedException();
         }
+        
+        var customerGrantor = customerRepository.findById(authorizedRequest.getGrantorId())
+                .orElseThrow(CustomerNotFoundException::new);
+        var customerGrantee = customerRepository.findById(authorizedRequest.getGranteeId())
+                .orElseThrow(CustomerNotFoundException::new);
 
         if (!isIbanBelongsToGrantor(customerGrantor, authorizedRequest.getAccountNumber())) {
             throw new IbanDoesNotBelongsToGrantorException();
