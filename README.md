@@ -21,11 +21,11 @@ Go to the project directory
 ```
 Build the application
 ```bash
-  mvn clean package
+  mvn clean install
 ```
 Start the server
-```bash
-  mvn spring-boot:run
+```
+  run the class >>>> src/main/java/nl/rabobank/RaboAssignmentApplication.java
 ```
 Application will start on
 [localhost:8080](http://localhost:8080)
