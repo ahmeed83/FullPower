@@ -1,7 +1,5 @@
 
-# Rabobank assignment Ahmed Aziz
-
-Rabobank assignment Ahmed Aziz
+# FULLPOWER APP
 
 ## Tech Stack
 
