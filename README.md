@@ -1,8 +1,6 @@
 
 # FULLPOWER APP
 
-Rabobank assignment Ahmed Aziz
-
 ## Tech Stack
 
 **Server:** React, TailwindCSS
